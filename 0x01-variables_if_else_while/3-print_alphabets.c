@@ -3,21 +3,17 @@
 /*
  * main - print alphabet in lower and uppercase
  *
- *
  * Return: (0) Success
  */
 int main(void)
 {
-	char ch;
+	char c;
 
-	for (ch = 'a' ; ch <= 'z' ; ch++)
-	{
-		putchar(ch);
-	}
-	for (ch = 'A' ; ch <= 'Z' ; ch++)
-	{
-		putchar(ch);
-	}
-	putchar('\n');
+	for (c = 'a'; c <= 'z'; c++)
+		putchar(c);
+	for (c = 'A'; c <= 'Z'; c++)
+		putchar(c);
+		putchar('\n');
+
 	return (0);
 }
