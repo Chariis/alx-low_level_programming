@@ -11,19 +11,9 @@
 int _islower(int c)
 {
 	if(islower(c))
-	{
-		int c;
+		return (0);
+	else
+		return (0);
 
-		printf("Return value when %c is passed to islower(): %d", c, islower(c));
-		return (1);
-	}
-	else       
-	{
-		int c;
-
-		printf("Return value when %c is passed to islower(): %d", c, islower(c));                                       
-		return(0);       
-
-	}
 }
 
