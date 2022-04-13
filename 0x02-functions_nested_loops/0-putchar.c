@@ -1,22 +1,15 @@
 #include <stdio.h>
+#include <unistd.h>
 
-/*
- * main - Print the word "_putchar" 
+/**
+ * main - Print the word "_putchar"
  *
  * Return: Always 0 (Success)
- *
  */
 
 int main(void)
 {
-	
-	int i;
-	char p[] = "_putchar";
-
-	for (i = 0; i < 8; i++)
-	{
-		_putchar(p[i]);
-	}
+	write(1, "_putchar",8);
 	_putchar('\n');
 	return (0);
 }
