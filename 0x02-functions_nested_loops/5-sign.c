@@ -9,12 +9,12 @@
 
 int print_sign(int n)
 {
-	if(n * (_-1) < 0)
+	if(n * (-1) < 0)
 	{
 		putchar('+');
 		return (1);
 	}
-	else if(n * (_-1) > 0)
+	else if(n * (-1) > 0)
 	{
 		putchar('-');
 		return (-1);
