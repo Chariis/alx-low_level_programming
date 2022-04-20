@@ -4,6 +4,7 @@
 /**
  * _puts - Prints a string, followed by a new line, to stdout
  * @*str: Value to be evaluated
+ * @str: Value to be evaluated
  * Return: Void
  */
 void _puts(char *str)
