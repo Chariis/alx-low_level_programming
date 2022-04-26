@@ -1,25 +1,19 @@
 #include "main.h"
 /**
- * _strspn - gets the length of a prefix substring
+ * _strchr - gets the length of a prefix substring
  *@s: string
  *@c: cutoff
   Return: the number of bytes that compose the length
  */
-unsigned int _strspn(char *s, char *accept)
+char *_strchr(char *s, char *c)
 {
 	int i;
-	int j;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] == c)
 		{
-			return &s[i];
-		}
-		else
-		{
-			j = i++;
-			s[i] = s[j];
+			return (&s[i]);
 		}
 	}
 	return (0);
