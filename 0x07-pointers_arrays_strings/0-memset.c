@@ -16,7 +16,3 @@ char *_memset(char *s, char b, unsigned int n)
 	}
 	return (s);
 }
-
-    © 2022 GitHub, Inc.
-
-        Term
