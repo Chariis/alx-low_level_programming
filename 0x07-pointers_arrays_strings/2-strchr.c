@@ -1,11 +1,12 @@
 #include "main.h"
 /**
  * _strchr - gets the length of a prefix substring
- *@s: string
- *@c: cutoff
-  Return: the number of bytes that compose the length
+ * @s: string
+ * @c: cutoff
+ *
+ * Return: the number of bytes that compose the length
  */
-char *_strchr(char *s, char *c)
+char *_strchr(char *s, char c)
 {
 	int i;
 
