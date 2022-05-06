@@ -1,54 +1,76 @@
 #include "main.h"
 #include <stdlib.h>
-
 /**
- * argstostr - Concatenates all arguments of the program into a string;
- *             arguments are separated by a new line in the string.
- * @ac: The number of arguments passed to the program.
- * @av: An array of pointers to the arguments.
- *
- * Return: If ac == 0, av == NULL, or the function fails - NULL.
- * Otherwise - a pointer to the new string.
+ * wordCounterRec - count num of words recursively
+ * @str: pointer to char
+ * @i: current index
+ * Return: number of words
  */
-char *argstostr(int ac, char **av)
+int wordCounterRec(char *str, int i)
 {
-	char *str;
-	int arg, byte, index, size = ac;
+	if (str[i] == '\0')
+		return (0);
+	if (str[i] == ' ' && str[i + 1] != ' ' && str[i + 1] != '\0')
+		return (1 + wordCounterRec(str, i + 1));
+	return (wordCounterRec(str, i + 1));
+}
+/**
+ * word_counter - counts number of words in 1d array of strings
+ * @str: pointer to char
+ * Return: number of words
+ */
+int word_counter(char *str)
+{
+	if (str[0] != ' ')
+		return (1 + wordCounterRec(str, 0));
+	return (wordCounterRec(str, 0));
+}
+/**
+ * strtow - splits a string into words.
+ * @str: string to be splitted
+ * Return: pointer to an array of strings (words) or null
+ */
+char **strtow(char *str)
+{
+	char **strDup;
+	int i, n, m, words;
 
 
-	if (ac == 0 || av == NULL)
+	if (str == NULL || str[0] == 0)
 		return (NULL);
-
-
-	for (arg = 0; arg < ac; arg++)
-	{
-		for (byte = 0; av[arg][byte]; byte++)
-			size++;
-	}
-
-
-	str = malloc(sizeof(char) * size + 1);
-
-
-	if (str == NULL)
+	words = word_counter(str);
+	if (words < 1)
 		return (NULL);
-
-
-	index = 0;
-
-
-	for (arg = 0; arg < ac; arg++)
+	strDup = malloc(sizeof(char *) * (words + 1));
+	if (strDup == NULL)
+		return (NULL);
+	i = 0;
+	while (i < words && *str != '\0')
 	{
-		for (byte = 0; av[arg][byte]; byte++)
-			str[index++] = av[arg][byte];
-
-	
-		str[index++] = '\n';
+		if (*str != ' ')
+		{
+			n = 0;
+			while (str[n] != ' ')
+				n++;
+			strDup[i] = malloc(sizeof(char) * (n + 1));
+			if (strDup[i] == NULL)
+			{
+				while (--i >= 0)
+					free(strDup[--i]);
+				free(strDup);
+				return (NULL);
+			}
+			m = 0;
+			while (m < n)
+			{
+				strDup[i][m] = *str;
+				m++, str++;
+			}
+			strDup[i][m] = '\0';
+			i++;
+		}
+		str++;
 	}
-
-
-	str[size] = '\0';
-
-
-	return (str);
+	strDup[i] = '\0';
+	return (strDup);
 }
